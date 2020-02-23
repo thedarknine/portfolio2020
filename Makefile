@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 SHELL := /bin/bash
 
-.PHONY: build build-php cc help install reset reset-php test test-ci test-functional test-unit
+.PHONY: build build-php cc docker-init docker-up help install php-exec reset reset-php test test-ci test-functional test-unit
 
 
 ## BUILD ==============================================================
@@ -26,6 +26,22 @@ reset: reset-php
 
 reset-php:
 	rm -rf vendor var/cache/*
+
+
+## RUN ================================================================
+
+## Build Docker containers
+docker-init:
+	docker build -t darknine/portfolio-php -f .docker/php/Dockerfile .
+	docker build -t darknine/portfolio-nginx -f .docker/nginx/Dockerfile .
+	docker build -t darknine/portfolio-mysql -f .docker/mysql/Dockerfile .
+
+## Run Docker compose
+docker-up:
+	docker-compose up --build
+
+php-exec:
+	docker-compose exec php /bin/bash
 
 
 ## TESTS ==============================================================

@@ -35,5 +35,10 @@
 /.php_cs.cache
 ###< friendsofphp/php-cs-fixer ###
 
+###> docker-files ###
+/.docker/volumes/*
+!.docker/volumes/.gitkeep
+###< docker-files ###
+
 /.idea
 /check_phony.php
