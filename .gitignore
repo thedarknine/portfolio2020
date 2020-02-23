@@ -30,4 +30,10 @@
 !bin/symfony_requirements
 ###< Managed by Composer ###
 
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
 /.idea
+/check_phony.php
